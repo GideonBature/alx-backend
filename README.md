@@ -1,4 +1,4 @@
-# Backend Specialization with Database Management and Storage
+# Backend Specialization with Backend
 
 ## Topics covered:
 
