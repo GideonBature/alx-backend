@@ -27,7 +27,6 @@ class Server:
     def __init__(self):
         self.__dataset = None
 
-
     def dataset(self) -> List[List]:
         """Cached dataset
         """
@@ -39,6 +38,18 @@ class Server:
 
         return self.__dataset
 
-
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            pass
+        """Returns the appropriare page of the dataset
+        i.e the correct list of rows
+        param:
+            @page: the current page number
+            @page_size: the number of items per page
+        return:
+            list of rows
+        """
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
+        start, end = index_range(page, page_size)
+        if end > len(self.dataset()):
+            return []
+        return self.dataset()[start:end]
