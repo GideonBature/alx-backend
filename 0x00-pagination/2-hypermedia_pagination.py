@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""0. Simple helper function
+"""2. Hypermedia pagination
 """
 from typing import Tuple, List
 import csv
@@ -53,3 +53,43 @@ class Server:
         if end > len(self.dataset()):
             return []
         return self.dataset()[start:end]
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """Returns a dictionary containing the following key-value pairs:
+            - page_size: the length of the returned dataset page
+            - page: the current page number
+            - data: the dataset page
+            - next_page: the next page number
+            - prev_page: the previous page number
+            - total_pages: the total number of pages
+        param:
+            @page: the current page number
+            @page_size: the number of items per page
+        return:
+            dictionary of key-value pairs
+        """
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
+        start, end = index_range(page, page_size)
+        if end > len(self.dataset()):
+            return []
+
+        data = self.dataset()[start:end]
+        if page == 1:
+            prev_page = None
+            next_page = page + 1
+        elif page == math.ceil((len(self.dataset()) / page_size)):
+            prev_page = page - 1
+            next_page = None
+        else:
+            prev_page = page - 1
+            next_page = page + 1
+
+        return {
+                "page_size": len(data),
+                "page": page,
+                "data": data,
+                "next_page": next_page,
+                "prev_page": prev_page,
+                "total_pages": math.ceil(len(self.dataset()) / page_size)
+        }
