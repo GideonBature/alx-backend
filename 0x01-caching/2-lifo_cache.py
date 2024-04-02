@@ -21,11 +21,11 @@ class LIFOCache(BaseCaching):
 
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS\
                 and key not in self.cache_data:
-            
+
             if self.last_key_added:
                 print(f'DISCARD: {self.last_key_added}')
                 del self.cache_data[self.last_key_added]
-        
+
         self.cache_data[key] = item
         self.last_key_added = key
 
