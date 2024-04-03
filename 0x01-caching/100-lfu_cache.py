@@ -6,6 +6,8 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LFUCache(BaseCaching):
+    """Least Frequently Used Cache Method
+    """
     def __init__(self):
         """init method
         """
