@@ -8,7 +8,6 @@ BaseCaching = __import__('base_caching').BaseCaching
 class MRUCache(BaseCaching):
     """MRU Caching
     """
-
     def __init__(self):
         """the init method
         """
@@ -30,8 +29,7 @@ class MRUCache(BaseCaching):
             print(f'DISCARD: {_key}')
             del self.cache_data[_key]
 
-        self.cache_data[key] = item 
-        
+        self.cache_data[key] = item
 
     def get(self, key):
         """retrieves values given a key
