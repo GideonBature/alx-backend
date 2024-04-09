@@ -6,4 +6,4 @@
 
 ### 0x01. [Caching](https://github.com/GideonBature/alx-backend/tree/main/0x01-caching)
 
-### 0x02. [](https://github.com/GideonBature/alx-backend/tree/main/0x02-)
+### 0x02. [i18n](https://github.com/GideonBature/alx-backend/tree/main/0x02-i18n)
